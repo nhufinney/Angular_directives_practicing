@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-ui-router.js"></script>
+
+    </head>
+
+    <body ng-app="myapp">
+
+        <div ng-controller ="MyController">
+            <div my-directive></div>
+
+        </div>
+
+        <!-- custom a directive -->
+        <script>
+            angular.module('myapp', []).controller('MyController', function($scope){
+                //
+            }).directive('myDirective', function(){
+                return {
+                    template: '<h1> Welcome to Angular Powerful Tool</h1>'
+                };
+            });
+        </script>
+    </body>
+</html>

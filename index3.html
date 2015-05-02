@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-ui-router.js"></script>
+        <script language="javascript"> </script>
+        <!-- // <script src="lib/angular.min.js"></script> -->
+    </head>
+
+    <body ng-app="myapp">
+
+        <div ng-controller ="MyController">
+            <div my-formregister></div>
+
+        </div>
+
+        <!-- custom a directive -->
+        <script>
+            angular.module('myapp', []).controller('MyController', function($scope){
+                //
+            })
+            .directive('myFormregister', function(){
+                var html = '<table>';
+                html  = html + '<tr>';
+                    html = html + '<td> user name: </td>';
+                    html = html +'<td><input type= "text" /> </td>';
+                html = html + '</tr>';
+                
+                html = html + '<tr>';
+                    html  = html + '<td>Password:</td>';
+                    html  = html + '<td><input type="password"/></td>';
+                    html  = html + '</tr>';
+                    html  = html + '<tr>';
+                    html  = html + '<td></td>';
+                    html  = html + '<td><input type="Button" value="Login"/></td>';
+                html  = html + '</tr>';
+
+                html = html + '</table>';
+                return {
+                    template: html
+                };
+            });
+
+        </script>
+    </body>
+</html>

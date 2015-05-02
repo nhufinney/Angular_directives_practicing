@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-ui-router.js"></script>
+        <script language="javascript"> </script>
+        <!-- // <script src="lib/angular.min.js"></script> -->
+        <style>
+            *{margin:0;};
+            body{padding: 20px};
+            .my-input {
+                -webkit-transition:all linear 0.5s;
+                transition:all linear 0.5s;
+                background: transparent;
+            };
+            .my-input.ng-invalid {
+                color:white;
+                background: red;
+            };
+        </style>
+        <script>
+            angular.module('myform', []).controller('examplecontroller', ['$scope', function($scope){
+                $scope.message = {
+                    title: 'simple math',
+                    num1 : 'first number',
+                    num2: 'second number',
+                    plus: 'plus two numbers',
+                    multiple: 'multiple two numbers',
+                    divide: 'divide two numbers'
+                };
+                $scope.styleresult = 'display: none';
+                $scope.show_result = function(){
+                    if ($scope.calform.$valid){
+                      $scope.styleresult= 'display: inline ';
+                        $scope.result = {
+                            plus: parseInt($scope.first_number) +parseInt($scope.second_number),
+                            multiple: parseInt($scope.first_number) * parseInt($scope.second_number),
+                            divide: parseInt($scope.first_number) / parseInt($scope.second_number)
+                        };
+                    } else{
+                        $scope.styleresult= 'display: none';
+                    }
+                };
+            }]);
+        </script>
+    </head>
+
+    <body ng-app="myform">
+        <form name="calform" ng-controller="examplecontroller">
+            <h2> {{message.title}}</h2>
+            <h5>{{message.num1}}</h5>
+            <input ng-model="first_number" ng-pattern="/^[0-9]+$/" ng-required="true" ng-keyup="show_result()" class = "my-input"/>
+            <h5>{{message.num2}}</h5>
+            <input ng-model="second_number" ng-pattern="/^[0-9]+$/" ng-required="true" ng-keyup="show_result()" class = "my-input"/>
+            <br><br>
+            <div style='{{styleresult}}'>
+                {{message.plus}} {{result.plus}}<br>
+                {{message.multiple}} {{result.multiple}}<br>
+                {{message.divide}} {{result.divide}}
+            </div>
+        </form>
+    </body>
+
+
+
+
+
+</html>
